@@ -1,0 +1,42 @@
+# CycloneFusion-AI Training & Loss Configuration
+experiment:
+  name: "multimodal_multitask_nio_study"
+  seed: 42
+  debug: true
+  epochs: 50
+  batch_size: 16
+  gradient_accumulation_steps: 2
+  learning_rate: 1.0e-4
+  min_learning_rate: 1.0e-6
+  weight_decay: 1.0e-4
+  early_stopping_patience: 10
+
+loss_weights:
+  lambda_detection: 1.0
+  lambda_classification: 1.5
+  lambda_localization: 2.0
+  lambda_intensity: 2.5
+  lambda_pressure: 1.0
+  lambda_track: 3.0
+  lambda_extreme_penalty: 2.0
+
+loss_functions:
+  detection: "focal_loss"
+  classification: "class_weighted_cross_entropy"
+  localization: "smooth_l1_loss"
+  intensity: "pinball_quantile_loss"
+  pressure: "huber_loss"
+  track: "haversine_great_circle_loss"
+
+extreme_event_handling:
+  rapid_intensification_threshold_kt_24h: 30.0
+  severe_intensity_threshold_kt: 64.0
+  extreme_intensity_threshold_kt: 90.0
+  oversampling_policy: "event_stratified"
+
+evaluation_split:
+  strategy: "cyclone_event_split"
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  stratify_by: "max_intensity_category"

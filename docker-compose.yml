@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgis/postgis:15-3.4
+    container_name: cyclonefusion-db
+    environment:
+      POSTGRES_USER: cyclone_user
+      POSTGRES_PASSWORD: cyclone_secret_password
+      POSTGRES_DB: cyclonefusion
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cyclone_user -d cyclonefusion"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.10.0
+    container_name: cyclonefusion-mlflow
+    ports:
+      - "5000:5000"
+    environment:
+      - BACKEND_STORE_URI=postgresql://cyclone_user:cyclone_secret_password@database:5432/cyclonefusion
+    depends_on:
+      database:
+        condition: service_healthy
+    command: >
+      mlflow server
+      --backend-store-uri postgresql://cyclone_user:cyclone_secret_password@database:5432/cyclonefusion
+      --default-artifact-root /mlflow/artifacts
+      --host 0.0.0.0
+      --port 5000
+    volumes:
+      - mlflow_artifacts:/mlflow/artifacts
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cyclonefusion-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://cyclone_user:cyclone_secret_password@database:5432/cyclonefusion
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      database:
+        condition: service_healthy
+    command: ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+volumes:
+  postgres_data:
+  mlflow_artifacts:

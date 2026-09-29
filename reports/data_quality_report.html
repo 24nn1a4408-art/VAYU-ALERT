@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CycloneFusion-AI — Data Quality & Integrity Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #0f172a; margin: 0; padding: 32px; }
+        .card { background: white; border-radius: 8px; border: 1px solid #e2e8f0; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        h1, h2, h3 { margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: #f1f5f9; padding: 12px; font-size: 13px; color: #475569; }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div>
+            <h1 style="margin: 0; font-size: 24px;">CycloneFusion-AI — Data Quality & Validation Report</h1>
+            <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">Phase 1 Pre-Training Gate Certification | Basin: North Indian Ocean</p>
+        </div>
+        <div>
+            <span style="background: #10b981; color: white; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 14px;">
+                STATUS: PASS
+            </span>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;">
+        <div class="card" style="margin: 0;">
+            <div style="font-size: 12px; color: #64748b;">Gates Passed</div>
+            <div style="font-size: 28px; font-weight: bold; color: #10b981;">10 / 10</div>
+        </div>
+        <div class="card" style="margin: 0;">
+            <div style="font-size: 12px; color: #64748b;">Cyclone Events</div>
+            <div style="font-size: 28px; font-weight: bold; color: #0284c7;">10</div>
+        </div>
+        <div class="card" style="margin: 0;">
+            <div style="font-size: 12px; color: #64748b;">Synoptic Observations</div>
+            <div style="font-size: 28px; font-weight: bold; color: #0284c7;">204</div>
+        </div>
+        <div class="card" style="margin: 0;">
+            <div style="font-size: 12px; color: #64748b;">Rapid Intensification Cases</div>
+            <div style="font-size: 28px; font-weight: bold; color: #8b5cf6;">16</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Phase 1 Validation Gates Audit</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Gate Name</th>
+                    <th>Status</th>
+                    <th>Enforcement</th>
+                    <th>Audit Diagnostics & Evidence</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_01_file_existence</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "files": {
+  "data/raw/nio_cyclones_best_track.csv": {
+   "exists": true,
+   "size_bytes": 19721
+  },
+  "data/raw/nio_environmental_synoptic.csv": {
+   "exists": true,
+   "size_bytes": 14167
+  },
+  "data/raw/satellite_frames_index.csv": {
+   "exists": true,
+   "size_bytes": 22530
+  },
+  "data/metadata/satellite_inventory.json": {
+   "exists": true,
+   "size_bytes": 1602
+  },
+  "data/metadata/environmental_grids.json": {
+   "exists": true,
+   "size_bytes": 1134
+  }
+ },
+ "all_present": true
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_02_schema_integrity</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "tracks_valid": true,
+ "envs_valid": true,
+ "sats_valid": true,
+ "missing_track_cols": [],
+ "missing_env_cols": [],
+ "missing_sat_cols": []
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_03_duplicate_detection</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "track_duplicates": 0,
+ "env_duplicates": 0,
+ "sat_duplicates": 0,
+ "total_duplicates": 0
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_04_timestamp_validity</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "invalid_timestamp_count": 0,
+ "non_monotonic_steps": 0,
+ "synoptic_interval_mean_hours": 6.0,
+ "total_intervals_evaluated": 194
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_05_coordinate_bounds</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "out_of_bounds_count": 0,
+ "bounds_configured": {
+  "lat_range": [
+   -5.0,
+   40.0
+  ],
+  "lon_range": [
+   40.0,
+   110.0
+  ]
+ },
+ "observed_lat_min": 5.2,
+ "observed_lat_max": 22.48,
+ "observed_lon_min": 64.97,
+ "observed_lon_max": 93.16
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_06_meteorological_bounds</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "wind_violations": 0,
+ "pressure_violations": 0,
+ "wind_range_kt": [
+  20.0,
+  140.0
+ ],
+ "pressure_range_hpa": [
+  890.0,
+  991.7
+ ]
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_07_cyclone_lifecycles</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "total_cyclones": 10,
+ "cyclones_with_too_few_observations": {},
+ "min_observations_observed": 8,
+ "max_observations_observed": 36
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_08_category_validity</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "unmapped_categories": [],
+ "category_counts": {
+  "D": 38,
+  "CS": 39,
+  "SCS": 34,
+  "VSCS": 37,
+  "ESCS": 34,
+  "SUCS": 6,
+  "DD": 16
+ },
+ "valid_taxonomy": [
+  "CS",
+  "D",
+  "DD",
+  "ESCS",
+  "LOW",
+  "SCS",
+  "SUCS",
+  "VSCS"
+ ]
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_09_modality_missingness</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Statistical</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "environmental": {
+  "sst": 8.82,
+  "shear": 8.82,
+  "rh": 8.82,
+  "mslp": 8.82,
+  "vor": 8.82
+ },
+ "satellite": {
+  "tir1": 6.86,
+  "tir2": 6.86,
+  "wv": 6.86,
+  "vis": 53.92
+ },
+ "vis_note": "VIS missingness is scientifically expected during nocturnal passes (Rule 3 explicit masking required)."
+}</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-family: monospace; font-size: 13px;">gate_10_leakage_safety_rules</td>
+                <td style="padding: 12px;"><span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">PASS</span></td>
+                <td style="padding: 12px; font-size: 13px; color: #475569;">Mandatory</td>
+                <td style="padding: 12px; font-size: 12px; font-family: monospace; color: #334155;">{
+ "rule": "Rule 2 (No intra-event frame leakage)",
+ "unique_cyclone_events": 10,
+ "sufficient_for_train_val_test_split": true,
+ "enforcement_policy": "Split strictly by cyclone_id; never shuffle or split synoptic frames across splits."
+}</td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <div class="card">
+            <h2>IMD 7-Stage Category Distribution</h2>
+            
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                    <span style="font-weight: 600;">D</span>
+                    <span>18.63% (38 obs)</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: #3b82f6; width: 55.89%; height: 100%;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                    <span style="font-weight: 600;">CS</span>
+                    <span>19.12% (39 obs)</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: #3b82f6; width: 57.36%; height: 100%;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                    <span style="font-weight: 600;">SCS</span>
+                    <span>16.67% (34 obs)</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: #3b82f6; width: 50.010000000000005%; height: 100%;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                    <span style="font-weight: 600;">VSCS</span>
+                    <span>18.14% (37 obs)</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: #3b82f6; width: 54.42%; height: 100%;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                    <span style="font-weight: 600;">ESCS</span>
+                    <span>16.67% (34 obs)</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: #3b82f6; width: 50.010000000000005%; height: 100%;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                    <span style="font-weight: 600;">SuCS</span>
+                    <span>2.94% (6 obs)</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: #3b82f6; width: 8.82%; height: 100%;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                    <span style="font-weight: 600;">DD</span>
+                    <span>7.84% (16 obs)</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: #3b82f6; width: 23.52%; height: 100%;"></div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card">
+            <h2>Data Readiness & Phase 2 Next Steps</h2>
+            <p><strong>Readiness:</strong> Certified for Phase 2 sequence construction</p>
+            <ul>
+                <li>Construct synoptic 5-step rolling sequences (T-24, T-18, T-12, T-6, T)</li><li>Apply event-level stratified split (train_events.csv, val_events.csv, test_events.csv)</li><li>Compute modality presence masks for nocturnal VIS channel & occasional ERA5 dropouts</li><li>Fit z-score normalization on training partition ONLY to prevent data leakage</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

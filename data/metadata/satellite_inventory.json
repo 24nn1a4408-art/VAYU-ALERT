@@ -1,0 +1,26 @@
+[
+  {
+    "satellite": "INSAT-3D",
+    "subpoint_lon": 82.0,
+    "operational_start": "2013-07-26",
+    "status": "operational",
+    "channels": [
+      {"name": "TIR1", "central_wavelength_um": 10.8, "spatial_resolution_km": 4.0, "calibrated_unit": "Kelvin (Brightness Temp)", "valid_range": [170.0, 330.0]},
+      {"name": "TIR2", "central_wavelength_um": 12.0, "spatial_resolution_km": 4.0, "calibrated_unit": "Kelvin (Brightness Temp)", "valid_range": [170.0, 330.0]},
+      {"name": "WV", "central_wavelength_um": 6.7, "spatial_resolution_km": 8.0, "calibrated_unit": "Kelvin (Brightness Temp)", "valid_range": [190.0, 270.0]},
+      {"name": "VIS", "central_wavelength_um": 0.65, "spatial_resolution_km": 1.0, "calibrated_unit": "Reflectance (Albedo %)", "valid_range": [0.0, 100.0]}
+    ]
+  },
+  {
+    "satellite": "INSAT-3DR",
+    "subpoint_lon": 74.0,
+    "operational_start": "2016-09-08",
+    "status": "operational",
+    "channels": [
+      {"name": "TIR1", "central_wavelength_um": 10.8, "spatial_resolution_km": 4.0, "calibrated_unit": "Kelvin (Brightness Temp)", "valid_range": [170.0, 330.0]},
+      {"name": "TIR2", "central_wavelength_um": 12.0, "spatial_resolution_km": 4.0, "calibrated_unit": "Kelvin (Brightness Temp)", "valid_range": [170.0, 330.0]},
+      {"name": "WV", "central_wavelength_um": 6.7, "spatial_resolution_km": 8.0, "calibrated_unit": "Kelvin (Brightness Temp)", "valid_range": [190.0, 270.0]},
+      {"name": "VIS", "central_wavelength_um": 0.65, "spatial_resolution_km": 1.0, "calibrated_unit": "Reflectance (Albedo %)", "valid_range": [0.0, 100.0]}
+    ]
+  }
+]

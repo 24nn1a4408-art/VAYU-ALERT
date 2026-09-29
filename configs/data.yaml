@@ -1,0 +1,102 @@
+# CycloneFusion-AI Data Pipeline Configuration
+data_paths:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  sequences_dir: "data/sequences"
+  metadata_dir: "data/metadata"
+  reports_dir: "reports"
+
+reference_time_step_hours: 6
+temporal_sequence:
+  input_timesteps_hours: [-24, -18, -12, -6, 0]
+  forecast_horizons_hours: [6, 12, 24, 48]
+  max_allowed_time_offset_minutes: 60
+
+satellite_modalities:
+  sensors: ["INSAT-3D", "INSAT-3DR", "Kalpana-1"]
+  channels:
+    - name: "TIR1"
+      wavelength_um: 10.8
+      resolution_km: 4.0
+      required: true
+    - name: "TIR2"
+      wavelength_um: 12.0
+      resolution_km: 4.0
+      required: false
+    - name: "WV"
+      wavelength_um: 6.7
+      resolution_km: 8.0
+      required: false
+    - name: "VIS"
+      wavelength_um: 0.65
+      resolution_km: 1.0
+      required: false
+  spatial_crop_size: [128, 128]
+  spatial_center_mode: "cyclone_eye_or_storm_bbox"
+
+environmental_variables:
+  reanalysis_source: "ERA5"
+  grid_resolution_deg: 0.25
+  variables:
+    - name: "sst"
+      standard_name: "sea_surface_temperature"
+      unit: "kelvin"
+      valid_range: [290.0, 310.0]
+    - name: "vws_200_850"
+      standard_name: "vertical_wind_shear"
+      unit: "m/s"
+      valid_range: [0.0, 50.0]
+    - name: "rh_700"
+      standard_name: "relative_humidity_700hpa"
+      unit: "percentage"
+      valid_range: [0.0, 100.0]
+    - name: "mslp"
+      standard_name: "mean_sea_level_pressure"
+      unit: "hPa"
+      valid_range: [870.0, 1030.0]
+    - name: "vor_850"
+      standard_name: "relative_vorticity_850hpa"
+      unit: "s^-1"
+      valid_range: [-0.001, 0.001]
+
+historical_cyclone_labels:
+  authoritative_agency: "IMD / RSMC New Delhi (and IBTrACS WMO canonical)"
+  intensity_categories:
+    - code: "D"
+      name: "Depression"
+      wind_range_kt: [17, 27]
+    - code: "DD"
+      name: "Deep Depression"
+      wind_range_kt: [28, 33]
+    - code: "CS"
+      name: "Cyclonic Storm"
+      wind_range_kt: [34, 47]
+    - code: "SCS"
+      name: "Severe Cyclonic Storm"
+      wind_range_kt: [48, 63]
+    - code: "VSCS"
+      name: "Very Severe Cyclonic Storm"
+      wind_range_kt: [64, 89]
+    - code: "ESCS"
+      name: "Extremely Severe Cyclonic Storm"
+      wind_range_kt: [90, 119]
+    - code: "SuCS"
+      name: "Super Cyclonic Storm"
+      wind_range_kt: [120, 200]
+
+validation_rules:
+  spatial:
+    lat_min: -5.0
+    lat_max: 40.0
+    lon_min: 40.0
+    lon_max: 110.0
+  meteorological:
+    min_wind_kt: 0.0
+    max_wind_kt: 200.0
+    min_pressure_hpa: 850.0
+    max_pressure_hpa: 1045.0
+  quality_checks:
+    check_duplicates: true
+    check_corrupt_files: true
+    check_timestamp_monotonicity: true
+    require_event_splitting: true

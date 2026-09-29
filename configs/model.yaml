@@ -1,0 +1,60 @@
+# CycloneFusion-AI Model Architecture Configuration
+model_name: "CycloneFusionMultimodal"
+version: "1.0.0"
+
+satellite_encoder:
+  backbone: "convnext_tiny"  # options: "cnn_baseline", "resnet34", "convnext_tiny"
+  pretrained: true
+  in_channels: 4             # TIR1, TIR2, WV, VIS
+  spatial_feature_dim: 256
+  freeze_backbone_epochs: 3
+
+temporal_satellite_encoder:
+  type: "ConvLSTM"
+  hidden_dim: 128
+  kernel_size: [3, 3]
+  num_layers: 2
+  dropout: 0.2
+
+environmental_encoder:
+  input_dim: 12              # normalized environmental variables + missingness flags
+  hidden_dims: [128, 256]
+  output_dim: 128
+  dropout: 0.15
+
+historical_encoder:
+  type: "GRU"                # "LSTM", "GRU", "Transformer"
+  input_dim: 8               # lat, lon, wind, pressure, category_id, heading, speed, dt
+  hidden_dim: 128
+  num_layers: 2
+  dropout: 0.2
+
+multimodal_fusion:
+  type: "CrossAttention"
+  d_model: 256
+  n_heads: 4
+  feedforward_dim: 512
+  dropout: 0.1
+  support_modality_mask: true
+
+multi_task_heads:
+  identification:
+    type: "binary_classifier"
+    out_features: 1
+  classification:
+    type: "multiclass_classifier"
+    num_classes: 7           # IMD 7 categories
+  localization:
+    type: "coordinate_regression"
+    out_features: 2          # lat, lon
+  intensity:
+    type: "quantile_regression"
+    horizons: [0, 6, 12, 24, 48]
+    quantiles: [0.1, 0.5, 0.9]
+  pressure:
+    type: "regression"
+    horizons: [6, 12, 24, 48]
+  track:
+    type: "geodesic_trajectory"
+    horizons: [6, 12, 24, 48]
+    coordinate_dim: 2

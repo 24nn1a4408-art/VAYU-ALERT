@@ -1,0 +1,7 @@
+{
+  "name": "VAYU ALERT",
+  "description": "Intelligent Cyclone Early Warning, Ocean Climate Surveillance & Disaster Management System with Multi-Tier Citizen and Emergency Response Portals",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

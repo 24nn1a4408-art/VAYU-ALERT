@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 280" width="100%" height="280">
+        <rect width="100%" height="100%" fill="#ffffff" rx="8" />
+        <text x="20" y="30" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a">IMD 7-Stage Cyclone Category Frequency</text>
+        <line x1="40" y1="220" x2="510" y2="220" stroke="#cbd5e1" stroke-width="1.5" />
+        
+        <rect x="60" y="45" width="45" height="175" fill="#2563eb" rx="4" />
+        <text x="82" y="37" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#1e293b" font-weight="bold">38</text>
+        <text x="82" y="240" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">D</text>
+        
+        <rect x="125" y="147" width="45" height="73" fill="#2563eb" rx="4" />
+        <text x="147" y="139" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#1e293b" font-weight="bold">16</text>
+        <text x="147" y="240" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">DD</text>
+        
+        <rect x="190" y="40" width="45" height="180" fill="#2563eb" rx="4" />
+        <text x="212" y="32" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#1e293b" font-weight="bold">39</text>
+        <text x="212" y="240" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">CS</text>
+        
+        <rect x="255" y="64" width="45" height="156" fill="#2563eb" rx="4" />
+        <text x="277" y="56" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#1e293b" font-weight="bold">34</text>
+        <text x="277" y="240" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">SCS</text>
+        
+        <rect x="320" y="50" width="45" height="170" fill="#2563eb" rx="4" />
+        <text x="342" y="42" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#1e293b" font-weight="bold">37</text>
+        <text x="342" y="240" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">VSCS</text>
+        
+        <rect x="385" y="64" width="45" height="156" fill="#2563eb" rx="4" />
+        <text x="407" y="56" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#1e293b" font-weight="bold">34</text>
+        <text x="407" y="240" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">ESCS</text>
+        
+        <rect x="450" y="220" width="45" height="0" fill="#2563eb" rx="4" />
+        <text x="472" y="212" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#1e293b" font-weight="bold">0</text>
+        <text x="472" y="240" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">SUCS</text>
+        
+    </svg>
